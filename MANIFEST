@@ -1,0 +1,14 @@
+Changes
+LICENSE
+MANIFEST
+META.yml
+Makefile.PL
+README
+README.mkdn
+lib/RDF/NS.pm
+lib/RDF/NS/Trine.pm
+share/20111028.txt
+t/compile.t
+t/namespaces.t
+t/trine.t
+tmp.txt
