@@ -1,9 +1,6 @@
 use strict;
 use warnings;
 package RDF::NS;
-BEGIN {
-  $RDF::NS::VERSION = '20111031';
-}
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
 use Scalar::Util qw(blessed);
@@ -104,18 +101,6 @@ sub AUTOLOAD {
 
 1;
 
-
-__END__
-=pod
-
-=head1 NAME
-
-RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
-
-=head1 VERSION
-
-version 20111031
-
 =head1 SYNOPSIS
 
   use RDF::NS '20111031';              # check at compile time
@@ -164,9 +149,7 @@ The code repository of this module contains an
 L<update script|https://github.com/nichtich/RDF-NS/blob/master/update.pl>
 to download the current prefix-namespace mappings from L<http://prefix.cc>.
 
-=head1 METHODS
-
-=head2 new ( $version [, %options ] )
+=method new ( $version [, %options ] )
 
 Create a new namespace mapping with a selected version (mandatory). The special
 version string C<"any"> can be used to get the newest mapping - actually this
@@ -174,49 +157,49 @@ is C<$RDF::NS::VERSION>, but you should better select a specific version, as
 mappings can change, violating backwards compatibility. Supported options 
 include C<warn> to enable warnings.
 
-=head2 LOAD ( $file [, %options ] )
+=method LOAD ( $file [, %options ] )
 
 Load namespace mappings from a particular tab-separated file. See NEW for 
 supported options.
 
-=head2 URI ( $short )
+=method URI ( $short )
 
 Expand a prefixed URI, such as C<foaf:Person>. Alternatively you can expand
 prefixed URIs with method calls, such as C<$ns-E<gt>foaf_Person>.
 
-=head2 TTL ( prefix[es] )
+=method TTL ( prefix[es] )
 
 Returns a Turtle/Notation3 C<@prefix> definition or a list of such definitions
 in list context. Prefixes can be passed as single arguments or separated by
 commas, vertical bars, and spaces.
 
-=head2 SPARQL ( prefix[es] )
+=method SPARQL ( prefix[es] )
 
 Returns a SPARQL PREFIX definition or a list of such definitions in list
 context. Prefixes can be passed as single arguments or separated by commas,
 vertical bars, and spaces.
 
-=head2 XMLNS ( prefix[es] )
+=method XMLNS ( prefix[es] )
 
 Returns an XML namespace declaration or a list of such declarations in list
 context. Prefixes can be passed as single arguments or separated by commas,
 vertical bars, and spaces.
 
-=head2 SELECT ( prefix[es] )
+=method SELECT ( prefix[es] )
 
 In list context, returns a sorted list of prefix-namespace pairs, which
 can be used to assign to a hash. In scalar context, returns the namespace
 of the first prefix that was found. Prefixes can be passed as single arguments
 or separated by commas, vertical bars, and spaces.
 
-=head2 MAP ( $code [, prefix[es] ] )
+=method MAP ( $code [, prefix[es] ] )
 
 Internally used to map particular or all prefixes. Prefixes can be selected as
 single arguments or separated by commas, vertical bars, and spaces. In scalar
 context, C<$_> is set to the first existing prefix (if found) and C<$code> is
 called. In list context, found prefixes are sorted at mapped with C<$code>.
 
-=head2 GET ( $uri )
+=method GET ( $uri )
 
 This method is used internally to create URIs as return value of the URI
 method and all lowercase shortcut methods, such as C<foaf_Person>. By default
@@ -228,16 +211,4 @@ There are several other CPAN modules to deal with IRI namespaces, for instance
 L<RDF::Trine::Namespace>, L<RDF::Trine::NamespaceMap>, L<RDF::Prefixes>,
 L<RDF::Simple::NS>, L<RDF::RDFa::Parser::Profile::PrefixCC> etc.
 
-=head1 AUTHOR
-
-Jakob Voss
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2011 by Jakob Voss.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
 =cut
-
