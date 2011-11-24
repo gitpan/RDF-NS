@@ -88,7 +88,7 @@ code	http://telegraphis.net/ontology/measurement/code#
 coeus	http://bioinformatics.ua.pt/coeus/
 coin	http://purl.org/court/def/2009/coin#
 com	http://purl.org/commerce#
-commerce	http://purl.org/commerce#
+commerce	http://search.yahoo.com/searchmonkey/commerce/
 common	http://www.w3.org/2007/uwa/context/common.owl#
 commons	http://commons.psi.enakting.org/def/
 compass	http://purl.org/net/compass#
@@ -122,6 +122,7 @@ cycann	http://sw.cyc.com/CycAnnotations_v1#
 d2rq	http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#
 dady	http://purl.org/NET/dady#
 daia	http://purl.org/ontology/daia/
+daiaserv	http://purl.org/ontology/daia/service/
 dailymed	http://www4.wiwiss.fu-berlin.de/dailymed/resource/dailymed/
 daml	http://www.daml.org/2001/03/daml+oil#
 dawgt	http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#
@@ -213,6 +214,7 @@ fresnel	http://www.w3.org/2004/09/fresnel#
 frir	http://purl.org/twc/ontology/frir.owl#
 game	http://data.totl.net/game/
 gazetteer	http://data.ordnancesurvey.co.uk/ontology/50kGazetteer/
+gbv	http://purl.org/ontology/gbv/
 gc	http://www.oegov.org/core/owl/gc#
 gd	http://rdf.data-vocabulary.org/#
 gelo	http://krauthammerlab.med.yale.edu/ontologies/gelo#
@@ -229,6 +231,7 @@ gesis	http://lod.gesis.org/lodpilot/ALLBUS/vocab.rdf#
 giving	http://ontologi.es/giving#
 gml	http://www.opengis.net/gml/
 gn	http://www.geonames.org/ontology#
+gnd	http://d-nb.info/gnd/
 go	http://www.geneontology.org/go#
 gob	http://purl.org/ontology/last-fm/
 gold	http://purl.org/linguistics/gold/
@@ -240,6 +243,7 @@ granatum	http://chem.deri.ie/granatum/
 grddl	http://www.w3.org/2003/g/data-view#
 greg	http://kasei.us/about/foaf.xrdf#
 gridworks	http://purl.org/net/opmv/types/gridworks#
+grs	http://www.georss.org/georss/
 gv	http://rdf.data-vocabulary.org/#
 h5	http://buzzword.org.uk/rdf/h5#
 hard	http://www.w3.org/2007/uwa/context/hardware.owl#
@@ -252,6 +256,7 @@ hemogram	http://www.agfa.com/w3c/2009/hemogram#
 hints2005	http://purl.org/twc/cabig/model/HINTS2005-1.owl#
 hlisting	http://sindice.com/hlisting/0.1/
 hospital	http://www.agfa.com/w3c/2009/hospital#
+htir	http://www.w3.org/2011/http#
 http	http://www.w3.org/2006/http#
 httph	http://www.w3.org/2007/ont/httph#
 httpvoc	http://www.w3.org/2006/http#
@@ -263,6 +268,7 @@ ical	http://www.w3.org/2002/12/cal/ical#
 imm	http://schemas.microsoft.com/imm/
 imreg	http://www.w3.org/2004/02/image-regions#
 infection	http://www.agfa.com/w3c/2009/infectiousDisorder#
+infosys	http://www.infosys.com/
 ir	http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#
 ire	http://www.ontologydesignpatterns.org/cpont/ire.owl#
 iron	http://purl.org/ontology/iron#
@@ -334,6 +340,7 @@ mu	http://www.kanzaki.com/ns/music#
 muo	http://purl.oclc.org/NET/muo/muo#
 music	http://musicontology.com/
 musim	http://purl.org/ontology/similarity/
+muto	http://purl.org/muto/core#
 mygrid	http://www.mygrid.org.uk/ontology#
 myspace	http://purl.org/ontology/myspace#
 myspo	http://purl.org/ontology/myspace#
@@ -371,6 +378,7 @@ ok	http://okkam.org/terms#
 okkam	http://models.okkam.org/ENS-core-vocabulary#
 olia	http://purl.org/olia/olia.owl#
 olo	http://purl.org/ontology/olo/core#
+omapi	http://purl.org/omapi/0.2/#
 omb	http://purl.org/ontomedia/ext/common/being#
 omc	http://purl.org/ontomedia/ext/common/bestiary#
 ome	http://purl.org/ontomedia/core/expression#
@@ -433,6 +441,7 @@ postcode	http://data.ordnancesurvey.co.uk/id/postcodeunit/
 powder	http://www.w3.org/2007/05/powder#
 ppo	http://vocab.deri.ie/ppo#
 pr	http://ontologi.es/profiling#
+prf	http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#
 prism	http://prismstandard.org/namespaces/1.2/basic/
 prissma	http://ns.inria.fr/prissma/v1#
 prj	http://purl.org/stuff/project/
@@ -453,6 +462,7 @@ psych	http://purl.org/vocab/psychometric-profile/
 pto	http://www.productontology.org/id/
 ptr	http://www.w3.org/2009/pointers#
 puc	http://purl.org/NET/puc#
+puelia	http://kwijibo.talis.com/vocabs/puelia#
 push	http://www.w3.org/2007/uwa/context/push.owl#
 qb	http://purl.org/linked-data/cube#
 qdoslf	http://foaf.qdos.com/lastfm/schema/
@@ -462,6 +472,7 @@ qudt	http://qudt.org/1.1/schema/qudt#
 r2r	http://www4.wiwiss.fu-berlin.de/bizer/r2r/
 rail	http://ontologi.es/rail/vocab#
 rdacarrier	http://rdvocab.info/termList/RDACarrierType/
+rdacontent	http://rdvocab.info/termList/RDAContentType/
 rdamedia	http://rdvocab.info/termList/RDAMediaType/
 rdb	http://www.dbs.cs.uni-duesseldorf.de/RDF/relational#
 rdf	http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -616,7 +627,6 @@ uni	http://purl.org/weso/uni/uni.html#
 uniprot	http://purl.uniprot.org/core/
 unit	http://qudt.org/vocab/unit#
 units	http://eulersharp.sourceforge.net/2003/03swap/unitsExtension#
-uri	http://purl.org/NET/uri#
 urn	http://fliqz.com/
 user	http://schemas.talis.com/2005/user/schema#
 usgov	http://www.rdfabout.com/rdf/schema/usgovt/
@@ -640,6 +650,8 @@ vote	http://www.rdfabout.com/rdf/schema/vote/
 vs	http://www.w3.org/2003/06/sw-vocab-status/ns#
 vso	http://purl.org/vso/ns#
 vsto	http://escience.rpi.edu/ontology/vsto/2/0/vsto.owl#
+vsw	http://verticalsearchworks.com/ontology/
+vvo	http://purl.org/vvo/ns#
 w3con	http://www.w3.org/2000/10/swap/pim/contact#
 w3p	http://prov4j.org/w3p/
 wai	http://purl.org/wai#
@@ -649,6 +661,7 @@ water	http://escience.rpi.edu/ontology/semanteco/2/0/water.owl#
 wdr	http://www.w3.org/2007/05/powder#
 wdrs	http://www.w3.org/2007/05/powder-s#
 web	http://www.w3.org/2007/uwa/context/web.owl#
+webbox	http://webbox.ecs.soton.ac.uk/ns#
 webtlab	http://webtlab.it.uc3m.es/
 wf	http://www.w3.org/2005/01/wf/flow#
 wgs	http://www.w3.org/2003/01/geo/wgs84_pos#

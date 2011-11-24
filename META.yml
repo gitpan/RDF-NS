@@ -7,7 +7,7 @@ configure_requires:
   ExtUtils::MakeMaker: 6.30
   File::ShareDir::Install: 0.03
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.200012, CPAN::Meta::Converter version 2.112150'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,6 +16,6 @@ name: RDF-NS
 requires:
   File::ShareDir: 1.00
 resources:
-  bugtracker: https://github.com/gbv/RDF-NS/issues
-  repository: https://github.com/gbv/RDF-NS
-version: 20111102
+  bugtracker: https://github.com/nichtich/RDF-NS/issues
+  repository: https://github.com/nichtich/RDF-NS
+version: 20111124

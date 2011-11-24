@@ -1,16 +1,16 @@
 use strict;
 use warnings;
 package RDF::NS;
-{
-  $RDF::NS::VERSION = '20111102';
+BEGIN {
+  $RDF::NS::VERSION = '20111124';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
 use Scalar::Util qw(blessed);
 use File::ShareDir;
-use 5.10.0;
 
 our $AUTOLOAD;
+our $FORMATS = qr/ttl|n(otation)?3|sparql|xmlns|txt|beacon/;
 
 sub new {
     my $class   = shift;
@@ -31,8 +31,8 @@ sub LOAD {
         chomp;
         next if /^#/;
         my ($prefix, $namespace) = split "\t", $_;
-        if ( $prefix =~ /^(isa|can|new)$/ ) {
-            warn "Cannot support prefix $prefix!" if $warn;
+        if ( $prefix =~ /^(isa|can|new|uri)$/ ) {
+            warn "Cannot support prefix '$prefix'" if $warn;
             next;
         } elsif ( $prefix =~ /^[a-z][a-z0-9]*$/ ) {
             if ( $namespace =~ /^[a-z][a-z0-9]*:[^"<>]*$/ ) {
@@ -50,9 +50,9 @@ sub LOAD {
 
 sub FORMAT {
     my $self = shift;
-	my $format = shift;
+	my $format = shift || "";
     $format = 'TTL' if $format =~ /^n(otation)?3$/i;
-    if ($format =~ /^(ttl|n3|sparql|txt)$/i) {
+    if (lc($format) =~ $FORMATS) {
 	    $format = uc($format);
 	    $self->$format( @_ );
 	}
@@ -76,6 +76,11 @@ sub XMLNS {
 sub TXT {
     my $self = shift;
     $self->MAP( sub { "$_\t".$self->{$_} } , @_ );
+}
+
+sub BEACON {
+    my $self = shift;
+    $self->MAP( sub { "#PREFIX: ".$self->{$_} } , @_ );
 }
 
 sub SELECT {
@@ -104,7 +109,7 @@ sub GET {
 sub URI {
     my $self = shift;
     return unless shift =~ /^([a-z][a-z0-9]*)?([:_]([^:]+))?$/;
-    my $ns = $self->{$1 // ''};
+    my $ns = $self->{ defined $1 ? $1 : '' };
     return unless defined $ns;
     return $self->GET($ns) unless $3;
     return $self->GET($ns.$3);
@@ -112,9 +117,9 @@ sub URI {
 
 sub AUTOLOAD {
     my $self = shift;
-    return unless $AUTOLOAD =~ /:([a-z][a-z0-9]*)(_([^:]+))?$/;
+    return unless $AUTOLOAD =~ /^.*::([a-z][a-z0-9]*)(_([^:]+))?$/;
     my $ns = $self->{$1} or return;
-    my $local = $3 // shift;
+    my $local = defined $3 ? $3 : shift;
     return $self->GET($ns) unless defined $local;
     return $self->GET($ns.$local);
 }
@@ -131,12 +136,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20111102
+version 20111124
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20111102';              # check at compile time
-  my $ns = RDF::NS->new('20111102');   # check at runtime
+  use RDF::NS '20111124';              # check at compile time
+  my $ns = RDF::NS->new('20111124');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -149,7 +154,7 @@ version 20111102
 
   # To get RDF::Trine::Node::Resource instead of strings
   use RDF::NS::Trine;
-  $ns = RDF::NS::Trine->new('20111102');
+  $ns = RDF::NS::Trine->new('20111124');
   $ns->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
 
   # load your own mapping
@@ -229,6 +234,10 @@ vertical bars, and spaces.
 
 Returns a list of tabular-separated prefix-namespace-mappings.
 
+=head2 BEACON ( prefix[es] )
+
+Returns a list of BEACON format prefix definitions (not including prefixes).
+
 =head2 SELECT ( prefix[es] )
 
 In list context, returns a sorted list of prefix-namespace pairs, which
@@ -253,7 +262,8 @@ it just returns C<$uri> unmodified.
 
 There are several other CPAN modules to deal with IRI namespaces, for instance
 L<RDF::Trine::Namespace>, L<RDF::Trine::NamespaceMap>, L<RDF::Prefixes>,
-L<RDF::Simple::NS>, L<RDF::RDFa::Parser::Profile::PrefixCC> etc.
+L<RDF::Simple::NS>, L<RDF::RDFa::Parser::Profile::PrefixCC>,
+L<Class::RDF::NS>, L<XML::Namespace>, L<XML::CommonNS> etc.
 
 =head1 AUTHOR
 

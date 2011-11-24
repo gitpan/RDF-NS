@@ -10,7 +10,7 @@ lib/RDF/NS/Trine.pm
 share/20111028.txt
 share/20111031.txt
 share/20111102.txt
+share/20111124.txt
 t/compile.t
 t/namespaces.t
 t/trine.t
-tmp.txt
