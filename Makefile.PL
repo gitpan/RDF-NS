@@ -11,25 +11,25 @@ install_share dist => "share";
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Just use popular RDF namespace prefixes from prefix.cc',
-  'AUTHOR' => 'Jakob Voss',
-  'BUILD_REQUIRES' => {},
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30',
-    'File::ShareDir::Install' => '0.03'
+  "ABSTRACT" => "Just use popular RDF namespace prefixes from prefix.cc",
+  "AUTHOR" => "Jakob Voss",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30",
+    "File::ShareDir::Install" => "0.03"
   },
-  'DISTNAME' => 'RDF-NS',
-  'EXE_FILES' => [
-    'bin/rdfns'
+  "DISTNAME" => "RDF-NS",
+  "EXE_FILES" => [
+    "bin/rdfns"
   ],
-  'LICENSE' => 'perl',
-  'NAME' => 'RDF::NS',
-  'PREREQ_PM' => {
-    'File::ShareDir' => '1.00'
+  "LICENSE" => "perl",
+  "NAME" => "RDF::NS",
+  "PREREQ_PM" => {
+    "File::ShareDir" => "1.00"
   },
-  'VERSION' => '20111124',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => 20111208,
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 
