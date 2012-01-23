@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20120123';
+  $RDF::NS::VERSION = '20120124';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -106,8 +106,13 @@ sub GET {
     $_[1];
 }
 
+sub BLANK {
+}
+
 sub URI {
     my $self = shift;
+	return $1 if $_[0] =~ /^<([a-zA-Z][a-zA-Z+.-]*:.+)>$/;
+	return $self->BLANK($_[0]) if $_[0] =~ /^_(:.*)?$/;
     return unless shift =~ /^([a-z][a-z0-9]*)?([:_]([^:]+))?$/;
     my $ns = $self->{ defined $1 ? $1 : '' };
     return unless defined $ns;
@@ -117,7 +122,8 @@ sub URI {
 
 sub AUTOLOAD {
     my $self = shift;
-    return unless $AUTOLOAD =~ /^.*::([a-z][a-z0-9]*)(_([^:]+))?$/;
+    return unless $AUTOLOAD =~ /^.*::([a-z][a-z0-9]*)?(_([^:]+)?)?$/;
+	return $self->BLANK( defined $3 ? "_:$3" : '_' ) unless $1;
     my $ns = $self->{$1} or return;
     my $local = defined $3 ? $3 : shift;
     return $self->GET($ns) unless defined $local;
@@ -136,17 +142,21 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20120123
+version 20120124
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20120123';              # check at compile time
-  my $ns = RDF::NS->new('20120123');   # check at runtime
+  use RDF::NS '20120124';              # check at compile time
+  my $ns = RDF::NS->new('20120124');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
   $ns->foaf('Person');     # http://xmlns.com/foaf/0.1/Person
   $ns->URI('foaf:Person'); # http://xmlns.com/foaf/0.1/Person
+
+  use RDF::NS;             # get rid if typing '$' by defining a constant
+  use constant NS => RDF::NS->new('20111208');
+  NS->foaf_Person;         # http://xmlns.com/foaf/0.1/Person
 
   $ns->SPAQRL('foaf');     # PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   $ns->TTL('foaf');        # @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -154,7 +164,7 @@ version 20120123
 
   # To get RDF::Trine::Node::Resource instead of strings
   use RDF::NS::Trine;
-  $ns = RDF::NS::Trine->new('20120123');
+  $ns = RDF::NS::Trine->new('20120124');
   $ns->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
 
   # load your own mapping
@@ -207,10 +217,12 @@ include C<warn> to enable warnings.
 Load namespace mappings from a particular tab-separated file. See NEW for 
 supported options.
 
-=head2 URI ( $short )
+=head2 URI ( $short | "<$URI>" )
 
-Expand a prefixed URI, such as C<foaf:Person>. Alternatively you can expand
-prefixed URIs with method calls, such as C<$ns-E<gt>foaf_Person>.
+Expand a prefixed URI, such as C<foaf:Person> or C<foaf_Person>. Alternatively 
+you can expand prefixed URIs with method calls, such as C<$ns-E<gt>foaf_Person>.
+If you pass an URI wrapped in C<E<lt>> and C<E<gt>>, it will not be expanded
+but returned as given.
 
 =head2 TTL ( prefix[es] )
 
@@ -271,7 +283,7 @@ Jakob Voss
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Jakob Voss.
+This software is copyright (c) 2012 by Jakob Voss.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

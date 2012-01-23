@@ -19,7 +19,10 @@ foreach my $a (@ARGV) {
         $version = $a;
         next;
     }
-    if ( $a =~ s/\.([^.]+)$// ) {
+    my $ns = RDF::NS->new($version);
+	if ( $a =~ /:/ ) {
+    	print map { $ns->URI($_)."\n" } split(/[|, ]+/, $a);
+    } elsif ( $a =~ s/\.([^.]+)$// ) {
         my $f = $1;
         if ( $f =~ $RDF::NS::FORMATS ) {
             $format = $f;
@@ -27,7 +30,7 @@ foreach my $a (@ARGV) {
             print STDERR "Unknown format: $f\n";
         }
     }
-    print map {"$_\n"} RDF::NS->new($version)->FORMAT( $format, $a );
+    print map {"$_\n"} $ns->FORMAT( $format, $a );
 }
 
 
@@ -40,7 +43,7 @@ rdfns - quickly get common URI namespaces
 
 =head1 VERSION
 
-version 20120123
+version 20120124
 
 =head1 AUTHOR
 
@@ -48,7 +51,7 @@ Jakob Voss
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Jakob Voss.
+This software is copyright (c) 2012 by Jakob Voss.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
@@ -57,11 +60,12 @@ the same terms as the Perl 5 programming language system itself.
 
 
 __DATA__
-USAGE: rdfns { [YYYYMMDD] <prefix[es]>[.format] }+
+USAGE: rdfns { [YYYYMMDD] ( <prefix[es]>[.format] | prefix:name ) }+
 
   formats: txt, sparql, ttl, n3, xmlns
  
   examples:
     rdfns 20111102 foaf,owl.ttl
     rdfns foaf.xmlns foaf.n3
+	rdfns rdfs:seeAlso
 
