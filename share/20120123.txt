@@ -29,6 +29,7 @@ aneo	http://akonadi-project.org/ontologies/aneo#
 ann	http://www.w3.org/2000/10/annotation-ns#
 ao	http://purl.org/ontology/ao/core#
 arch	http://purl.org/archival/vocab/arch#
+arecipe	http://purl.org/amicroformat/arecipe/
 artstor	http://simile.mit.edu/2003/10/ontologies/artstor#
 ass	http://uptheasset.org/ontology#
 atom	http://www.w3.org/2005/Atom/
@@ -76,6 +77,7 @@ cert	http://www.w3.org/ns/auth/cert#
 cfp	http://sw.deri.org/2005/08/conf/cfp.owl#
 chebi	http://bio2rdf.org/chebi:
 chord	http://purl.org/ontology/chord/
+cis	http://purl.org/NET/cloudisus#
 cito	http://purl.org/net/cito/
 cld	http://purl.org/cld/terms/
 climb	http://climb.dataincubator.org/vocabs/climb/
@@ -123,12 +125,14 @@ cycann	http://sw.cyc.com/CycAnnotations_v1#
 d2rq	http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#
 dady	http://purl.org/NET/dady#
 daia	http://purl.org/ontology/daia/
-daiaserv	http://purl.org/ontology/daia/service/
+daiaserv	http://purl.org/ontology/daia/Service/
 dailymed	http://www4.wiwiss.fu-berlin.de/dailymed/resource/dailymed/
 daml	http://www.daml.org/2001/03/daml+oil#
+datafaqs	http://purl.org/twc/vocab/datafaqs#
 dawgt	http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#
 days	http://ontologi.es/days#
 dayta	http://dayta.me/resource#
+db	http://dbpedia.org/
 dblp	http://www4.wiwiss.fu-berlin.de/dblp/terms.rdf#
 dbo	http://dbpedia.org/ontology/
 dbp	http://dbpedia.org/property/
@@ -182,6 +186,7 @@ edm	http://www.europeana.eu/schemas/edm/
 eg	http://eulergui.sourceforge.net/engine.owl#
 elog	http://eulersharp.sourceforge.net/2003/03swap/log-rules#
 enc	http://www.w3.org/2001/04/xmlenc#
+ends	http://labs.mondeca.com/vocab/endpointStatus#
 environ	http://eulersharp.sourceforge.net/2003/03swap/environment#
 es	http://eulersharp.sourceforge.net/2003/03swap/log-rules#
 esd	http://def.esd.org.uk/
@@ -269,6 +274,7 @@ humanbody	http://eulersharp.sourceforge.net/2003/03swap/humanBody#
 iao	http://purl.obolibrary.org/obo/iao.owl#
 ibis	http://purl.org/ibis#
 ical	http://www.w3.org/2002/12/cal/ical#
+identity	http://purl.org/twc/ontologies/identity.owl#
 imm	http://schemas.microsoft.com/imm/
 imreg	http://www.w3.org/2004/02/image-regions#
 infection	http://www.agfa.com/w3c/2009/infectiousDisorder#
@@ -283,8 +289,10 @@ isi	http://purl.org/ontology/is/inst/
 isq	http://purl.org/ontology/is/quality/
 ist	http://purl.org/ontology/is/types/
 iswc	http://annotation.semanticweb.org/2004/iswc#
+italy	http://data.kasabi.com/dataset/italy/schema/
 java	http://www.w3.org/2007/uwa/context/java.owl#
 jdbc	http://d2rq.org/terms/jdbc/
+jita	http://aims.fao.org/aos/jita/
 kb	http://deductions.sf.net/ontology/knowledge_base.owl#
 kontakt	http://richard.cyganiak.de/
 kw	http://kwantu.net/kw/
@@ -325,7 +333,7 @@ ma	http://www.w3.org/ns/ma-ont#
 madsrdf	http://www.loc.gov/mads/rdf/v1#
 malignneo	http://www.agfa.com/w3c/2009/malignantNeoplasm#
 math	http://www.w3.org/2000/10/swap/math#
-media	http://purl.org/media#
+media	http://search.yahoo.com/searchmonkey/media/
 meetup	http://www.lotico.com/meetup/
 mei	http://www.music-encoding.org/ns/mei/
 memo	http://ontologies.smile.deri.ie/2009/02/27/memo#
@@ -335,6 +343,7 @@ mf	http://poshrdf.org/ns/mf#
 mit	http://purl.org/ontology/mo/mit#
 mo	http://purl.org/ontology/mo/
 moat	http://moat-project.org/ns#
+moby	http://www.mygrid.org.uk/mygrid-moby-service#
 money	http://purl.org/net/rdf-money/
 movie	http://data.linkedmdb.org/resource/movie/
 ms	http://purl.org/obo/owl/MS#
@@ -356,13 +365,14 @@ nco	http://www.semanticdesktop.org/ontologies/2007/03/22/nco#
 ne	http://umbel.org/umbel/ne/
 net	http://www.w3.org/2007/uwa/context/network.owl#
 nexif	http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#
-nfo	http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
+nfo	http://www.semanticdesktop.org/ontologies/nfo/#
 ngeo	http://geovocab.org/geometry#
 nid3	http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#
 nie	http://www.semanticdesktop.org/ontologies/2007/01/19/nie#
 nmo	http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#
 nndsr	http://semanticdiet.com/schema/usda/nndsr/
 nocal	http://vocab.deri.ie/nocal#
+np	http://www.nanopub.org/nschema#
 nrl	http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#
 nsa	http://multimedialab.elis.ugent.be/organon/ontologies/ninsuna#
 nt	http://ns.inria.fr/nicetag/2010/09/09/voc#
@@ -375,6 +385,7 @@ obo	http://purl.obolibrary.org/obo/
 oboro	http://obofoundry.org/ro/ro.owl#
 oboso	http://purl.org/obo/owl/SO#
 oc	http://opencoinage.org/rdf/
+ocd	http://dati.camera.it/ocd/
 odp	http://ontologydesignpatterns.org/
 og	http://opengraphprotocol.org/schema/
 ogp	http://ogp.me/ns#
@@ -426,6 +437,7 @@ phss	http://ns.poundhill.com/phss/1.0/
 pimo	http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#
 ping	http://purl.org/net/pingback/
 place	http://purl.org/ontology/places/
+places	http://purl.org/ontology/places#
 play	http://uriplay.org/spec/ontology/#
 plink	http://buzzword.org.uk/rdf/personal-link-types#
 pmlj	http://inference-web.org/2.0/pml-justification.owl#
@@ -455,6 +467,7 @@ profiling	http://ontologi.es/profiling#
 prog	http://purl.org/prog/
 prot	http://www.proteinontology.info/po.owl#
 protege	http://protege.stanford.edu/system#
+protegedc	http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#
 protons	http://proton.semanticweb.org/2005/04/protons#
 prov	http://dvcs.w3.org/hg/prov/raw-file/tip/ontology/ProvenanceOntology.owl#
 provenir	http://knoesis.wright.edu/provenir/provenir.owl#
@@ -619,6 +632,7 @@ tmo	http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#
 tmpl	http://purl.org/restdesc/http-template#
 toby	http://tobyinkster.co.uk/#
 trackback	http://madskills.com/public/xml/rss/module/trackback/
+transit	http://vocab.org/transit/terms/
 transmed	http://www.w3.org/2001/sw/hcls/ns/transmed/
 tripfs	http://purl.org/tripfs/2010/02#
 tripfs2	http://purl.org/tripfs/2010/06#
@@ -656,6 +670,7 @@ voidp	http://www.enakting.org/provenance/voidp/
 vote	http://www.rdfabout.com/rdf/schema/vote/
 vs	http://www.w3.org/2003/06/sw-vocab-status/ns#
 vso	http://purl.org/vso/ns#
+vsr	http://purl.org/twc/vocab/vsr#
 vsto	http://escience.rpi.edu/ontology/vsto/2/0/vsto.owl#
 vsw	http://verticalsearchworks.com/ontology/
 vvo	http://purl.org/vvo/ns#
@@ -671,10 +686,12 @@ web	http://www.w3.org/2007/uwa/context/web.owl#
 webbox	http://webbox.ecs.soton.ac.uk/ns#
 webtlab	http://webtlab.it.uc3m.es/
 wf	http://www.w3.org/2005/01/wf/flow#
+wfdesc	http://purl.org/wf4ever/wfdesc#
 wgs	http://www.w3.org/2003/01/geo/wgs84_pos#
 wgs84	http://www.w3.org/2003/01/geo/wgs84_pos#
 wgspos	http://www.w3.org/2003/01/geo/wgs84_pos#
 whois	http://www.kanzaki.com/ns/whois#
+wikipedia	http://www.systemone.at/2006/03/wikipedia#
 wisski	http://wiss-ki.eu/
 wlp	http://weblab-project.org/core/model/property/processing/
 wm	http://ns.inria.fr/webmarks#
