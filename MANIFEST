@@ -5,6 +5,7 @@ META.yml
 Makefile.PL
 README
 bin/rdfns
+constant.pl
 lib/RDF/NS.pm
 lib/RDF/NS/Trine.pm
 share/20111028.txt
@@ -13,6 +14,7 @@ share/20111102.txt
 share/20111124.txt
 share/20111208.txt
 share/20120124.txt
+share/20120426.txt
 t/compile.t
 t/namespaces.t
 t/trine.t

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20120124';
+  $RDF::NS::VERSION = '20120426';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -142,12 +142,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20120124
+version 20120426
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20120124';              # check at compile time
-  my $ns = RDF::NS->new('20120124');   # check at runtime
+  use RDF::NS '20120426';              # check at compile time
+  my $ns = RDF::NS->new('20120426');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -164,7 +164,7 @@ version 20120124
 
   # To get RDF::Trine::Node::Resource instead of strings
   use RDF::NS::Trine;
-  $ns = RDF::NS::Trine->new('20120124');
+  $ns = RDF::NS::Trine->new('20120426');
   $ns->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
 
   # load your own mapping

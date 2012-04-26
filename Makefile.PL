@@ -27,7 +27,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "File::ShareDir" => "1.00"
   },
-  "VERSION" => 20120124,
+  "VERSION" => 20120426,
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -52,8 +52,10 @@ delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
 
 WriteMakefile(%WriteMakefileArgs);
 
+{
 package
 MY;
 use File::ShareDir::Install qw(postamble);
+}
 
 
