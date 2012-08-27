@@ -2,12 +2,13 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20120521';
+  $RDF::NS::VERSION = '20120827';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
 use Scalar::Util qw(blessed);
 use File::ShareDir;
+use Carp;
 
 our $AUTOLOAD;
 our $FORMATS = qr/ttl|n(otation)?3|sparql|xmlns|txt|beacon/;
@@ -16,6 +17,9 @@ sub new {
     my $class   = shift;
     my $version = shift || 'undef';
 	$version = $RDF::NS::VERSION if $version eq 'any';
+    croak "RDF::NS version must be a date" 
+        unless $version =~ /^([0-9]{4})-?([0-9][0-9])-?([0-9][0-9])$/;
+    $version = "$1$2$3";
     LOAD( $class, File::ShareDir::dist_file('RDF-NS', "$version.txt" ), @_ );
 }
 
@@ -56,6 +60,34 @@ sub FORMAT {
 	    $format = uc($format);
 	    $self->$format( @_ );
 	}
+}
+
+sub PREFIX {
+	my ($self, $uri) = @_;
+	while ( my ($prefix, $namespace) = each %$self ) {
+		return $prefix if $uri eq $namespace;
+	}
+	undef;
+}
+
+sub PREFIXES {
+	my ($self, $uri) = @_;
+	my @prefixes;
+	while ( my ($prefix, $namespace) = each %$self ) {
+		push @prefixes, $prefix if $uri eq $namespace;
+	}
+	return @prefixes;
+}
+
+sub REVERSE {
+    my $self = shift;
+    my $lookup = { };
+	while ( my ($prefix, $namespace) = each %$self ) {
+        my $has = $lookup->{$namespace};
+        $lookup->{$namespace} = $prefix unless
+            $has and length($has) < length($prefix);
+	}
+	return $lookup;
 }
 
 sub TTL {
@@ -142,12 +174,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20120521
+version 20120827
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20120521';              # check at compile time
-  my $ns = RDF::NS->new('20120521');   # check at runtime
+  use RDF::NS '20120827';              # check at compile time
+  my $ns = RDF::NS->new('20120827');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -164,7 +196,7 @@ version 20120521
 
   # get RDF::Trine::Node::Resource instead of strings
   use RDF::NS::Trine;      # requires RDF::Trine
-  $ns = RDF::NS::Trine->new('20120521');
+  $ns = RDF::NS::Trine->new('20120827');
   $ns->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
 
   # load your own mapping
@@ -250,6 +282,22 @@ Returns a list of tabular-separated prefix-namespace-mappings.
 =head2 BEACON ( prefix[es] )
 
 Returns a list of BEACON format prefix definitions (not including prefixes).
+
+=head2 PREFIX ( $uri )
+
+Get a prefix of a namespace URI, if it is defined. This method does a reverse
+lookup which is less performant than the other direction. If multiple prefixes
+are defined, it is not determinstic which one is returned. If you need to call
+this method frequently, better create a reverse hash (method REVERSE).
+
+=head2 PREFIXES ( $uri )
+
+Get all known prefixes of a namespace URI.
+
+=head2 REVERSE
+
+Create a lookup hash from namespace URIs to prefixes. If multiple prefixes
+exist, the shortes will be used.
 
 =head2 SELECT ( prefix[es] )
 
