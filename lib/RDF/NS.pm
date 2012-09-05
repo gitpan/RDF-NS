@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20120829';
+  $RDF::NS::VERSION = '20120905';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -157,7 +157,9 @@ sub GET {
 sub BLANK {
 }
 
-sub URI {
+*URI = *uri;
+
+sub uri {
     my $self = shift;
 	return $1 if $_[0] =~ /^<([a-zA-Z][a-zA-Z+.-]*:.+)>$/;
 	return $self->BLANK($_[0]) if $_[0] =~ /^_(:.*)?$/;
@@ -230,17 +232,17 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20120829
+version 20120905
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20120829';              # check at compile time
-  my $ns = RDF::NS->new('20120829');   # check at runtime
+  use RDF::NS '20120905';              # check at compile time
+  my $ns = RDF::NS->new('20120905');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
   $ns->foaf('Person');     # http://xmlns.com/foaf/0.1/Person
-  $ns->URI('foaf:Person'); # http://xmlns.com/foaf/0.1/Person
+  $ns->uri('foaf:Person'); # http://xmlns.com/foaf/0.1/Person
 
   use RDF::NS;             # get rid if typing '$' by defining a constant
   use constant NS => RDF::NS->new('20111208');
@@ -249,11 +251,6 @@ version 20120829
   $ns->SPAQRL('foaf');     # PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   $ns->TTL('foaf');        # @prefix foaf: <http://xmlns.com/foaf/0.1/> .
   $ns->XMLNS('foaf');      # xmlns:foaf="http://xmlns.com/foaf/0.1/"
-
-  # get RDF::Trine::Node::Resource instead of strings
-  use RDF::NS::Trine;      # requires RDF::Trine
-  $ns = RDF::NS::Trine->new('20120829');
-  $ns->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
 
   # load your own mapping from a file
   $ns = RDF::NS->new("mapping.txt");
@@ -292,7 +289,9 @@ The code repository of this module also contains an
 L<update script|https://github.com/nichtich/RDF-NS/blob/master/update.pl>
 to download the current prefix-namespace mappings from L<http://prefix.cc>.
 
-=head1 METHODS
+=head1 GENERAL METHODS
+
+In most cases you only need the following lowercase methods.
 
 =head2 new ( $file_or_date [, %options ] )
 
@@ -302,14 +301,24 @@ specific version, as mappings can change, violating backwards compatibility.
 Supported options include C<warn> to enable warnings and C<at> to specify a
 date. 
 
-=head2 LOAD ( $file_or_date [, %options ] )
+=head2 E<prefix>
 
-=head2 URI ( $short | "<$URI>" )
+Returns the namespace for E<prefix> if namespace prefix is defined. For
+instance C<< $ns->foaf >> returns C<http://xmlns.com/foaf/0.1/>.
+
+=head2 E<prefix_name>
+
+Returns the namespace plus local name, if namespace prefix is defined. For
+instance C<< $ns->foaf_Person >> returns C<http://xmlns.com/foaf/0.1/Person>.
+
+=head2 uri ( $short | "<$URI>" )
 
 Expand a prefixed URI, such as C<foaf:Person> or C<foaf_Person>. Alternatively 
 you can expand prefixed URIs with method calls, such as C<$ns-E<gt>foaf_Person>.
 If you pass an URI wrapped in C<E<lt>> and C<E<gt>>, it will not be expanded
 but returned as given.
+
+=head1 SERIALIZATION METHODS
 
 =head2 TTL ( prefix[es] )
 
@@ -337,6 +346,8 @@ Returns a list of tabular-separated prefix-namespace-mappings.
 
 Returns a list of BEACON format prefix definitions (not including prefixes).
 
+=head1 LOOKUP METHODS
+
 =head2 PREFIX ( $uri )
 
 Get a prefix of a namespace URI, if it is defined. This method does a reverse
@@ -360,6 +371,8 @@ can be used to assign to a hash. In scalar context, returns the namespace
 of the first prefix that was found. Prefixes can be passed as single arguments
 or separated by commas, vertical bars, and spaces.
 
+=head1 INTERNAL METHODS
+
 =head2 MAP ( $code [, prefix[es] ] )
 
 Internally used to map particular or all prefixes. Prefixes can be selected as
@@ -376,8 +389,8 @@ it just returns C<$uri> unmodified.
 =head1 SEE ALSO
 
 There are several other CPAN modules to deal with IRI namespaces, for instance
-L<RDF::Trine::Namespace>, L<RDF::Trine::NamespaceMap>, L<RDF::Prefixes>,
-L<RDF::Simple::NS>, L<RDF::RDFa::Parser::Profile::PrefixCC>,
+L<RDF::Trine::Namespace>, L<RDF::Trine::NamespaceMap>, L<URI::NamespaceMap>,
+L<RDF::Prefixes>, L<RDF::Simple::NS>, L<RDF::RDFa::Parser::Profile::PrefixCC>,
 L<Class::RDF::NS>, L<XML::Namespace>, L<XML::CommonNS> etc.
 
 =head1 AUTHOR

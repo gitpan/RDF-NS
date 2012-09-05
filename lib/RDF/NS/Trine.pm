@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS::Trine;
 {
-  $RDF::NS::Trine::VERSION = '20120829';
+  $RDF::NS::Trine::VERSION = '20120905';
 }
 #ABSTRACT: Popular RDF namespace prefixes from prefix.cc as RDF::Trine nodes
 
@@ -31,29 +31,35 @@ RDF::NS::Trine - Popular RDF namespace prefixes from prefix.cc as RDF::Trine nod
 
 =head1 VERSION
 
-version 20120829
+version 20120905
 
 =head1 SYNOPSIS
 
   use RDF::NS::Trine;
-  use constant NS => RDF::NS::Trine->new('20120829');
+  use constant NS => RDF::NS::Trine->new('20120905');
 
-  NS->foaf_Person;        # a RDF::Trine::Node::Resource
-  NS->URI('foaf:Person);  # same
+  NS->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
+  NS->uri('foaf:Person);  #  same RDF::Trine::Node::Resource
   NS->foaf_Person->uri;   # http://xmlns.com/foaf/0.1/Person
 
-  NS->_;                  # a RDF::Trine::Node::Blank
-  NS->_abc;               # a blank node with id 'abc'
-  NS->URI('_:abc');       # same
+  NS->_;                  # RDF::Trine::Node::Blank
+  NS->_abc;               # blank node with id 'abc'
+  NS->uri('_:abc');       # same
 
 =head1 DESCRIPTION
 
-In contrast to L<RDF::NS>, which should be consulted for documentation, this
-returns no plain string URIs but instances of L<RDF::Trine::Node::Resource>
-or L<RDF::Trine::Node::Blank>.
+RDF::NS::Trine works like L<RDF::NS> but it returns instances of
+L<RDF::Trine::Node::Resource> (and L<RDF::Trine::Node::Blank> instead of
+strings.
 
 Before using this module, make sure to install L<RDF::Trine>, which is not
 installed automatically together with L<RDF::NS>!
+
+=head1 ADDITIONAL METHODS
+
+=head1 BLANK ( [ $short ] )
+
+Returns a new L<RDF::Trine::Node::Blank>.
 
 =head1 AUTHOR
 

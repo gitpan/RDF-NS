@@ -7,9 +7,11 @@ README
 bin/rdfns
 lib/RDF/NS.pm
 lib/RDF/NS/Trine.pm
+lib/RDF/NS/URIS.pm
 share/prefix.cc
 t/compile.t
 t/history.t
 t/namespaces.t
 t/prefix.t
 t/trine.t
+t/uris.t
