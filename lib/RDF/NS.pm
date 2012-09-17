@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20120905';
+  $RDF::NS::VERSION = '20120917';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -232,12 +232,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20120905
+version 20120917
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20120905';              # check at compile time
-  my $ns = RDF::NS->new('20120905');   # check at runtime
+  use RDF::NS '20120917';              # check at compile time
+  my $ns = RDF::NS->new('20120917');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person

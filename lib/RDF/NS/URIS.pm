@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS::URIS;
 {
-  $RDF::NS::URIS::VERSION = '20120905';
+  $RDF::NS::URIS::VERSION = '20120917';
 }
 #ABSTRACT: Popular RDF namespace prefixes from prefix.cc as URI objects
 
@@ -25,12 +25,12 @@ RDF::NS::URIS - Popular RDF namespace prefixes from prefix.cc as URI objects
 
 =head1 VERSION
 
-version 20120905
+version 20120917
 
 =head1 SYNOPSIS
 
   use RDF::NS::URIS;
-  use constant NS => RDF::NS::URIS->new('20120905');
+  use constant NS => RDF::NS::URIS->new('20120917');
 
   NS->foaf_Person;             # an URI object
   NS->uri('foaf:Person);       # same
@@ -39,7 +39,7 @@ version 20120905
 =head1 DESCRIPTION
 
 RDF::NS::URIS works like L<RDF::NS> but it returns instances of L<URI> instead
-of plain strings.
+of plain strings. You must have installed module L<URI> to use this package.
 
 =head1 SEE ALSO
 
