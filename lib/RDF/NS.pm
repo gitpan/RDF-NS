@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20130208';
+  $RDF::NS::VERSION = '20130327';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -232,12 +232,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20130208
+version 20130327
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20130208';              # check at compile time
-  my $ns = RDF::NS->new('20130208');   # check at runtime
+  use RDF::NS '20130327';              # check at compile time
+  my $ns = RDF::NS->new('20130327');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -399,7 +399,7 @@ Jakob Voss
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Jakob Voss.
+This software is copyright (c) 2013 by Jakob Voss.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
