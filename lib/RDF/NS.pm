@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20130327';
+  $RDF::NS::VERSION = '20130402';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -80,10 +80,10 @@ sub FORMAT {
 
 sub PREFIX {
 	my ($self, $uri) = @_;
-	while ( my ($prefix, $namespace) = each %$self ) {
-		return $prefix if $uri eq $namespace;
+	foreach my $prefix ( keys %$self ) {
+        return $prefix if $uri eq $self->{$prefix};
 	}
-	undef;
+	return undef;
 }
 
 sub PREFIXES {
@@ -232,12 +232,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20130327
+version 20130402
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20130327';              # check at compile time
-  my $ns = RDF::NS->new('20130327');   # check at runtime
+  use RDF::NS '20130402';              # check at compile time
+  my $ns = RDF::NS->new('20130402');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
