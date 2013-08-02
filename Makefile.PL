@@ -12,7 +12,7 @@ install_share dist => "share";
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Just use popular RDF namespace prefixes from prefix.cc",
-  "AUTHOR" => "Jakob Voss",
+  "AUTHOR" => "Jakob Vo\303\237",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30",
@@ -27,7 +27,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "File::ShareDir" => "1.00"
   },
-  "VERSION" => 20130402,
+  "VERSION" => 20130802,
   "test" => {
     "TESTS" => "t/*.t"
   }
