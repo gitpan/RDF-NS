@@ -27,7 +27,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "File::ShareDir" => "1.00"
   },
-  "VERSION" => 20130802,
+  "VERSION" => 20130812,
   "test" => {
     "TESTS" => "t/*.t"
   }
