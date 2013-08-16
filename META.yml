@@ -15,4 +15,8 @@ meta-spec:
 name: RDF-NS
 requires:
   File::ShareDir: 1.00
-version: 20130812
+resources:
+  bugtracker: https://github.com/nichtich/RDF-NS/issues
+  homepage: https://github.com/nichtich/RDF-NS
+  repository: https://github.com/nichtich/RDF-NS.git
+version: 20130816
