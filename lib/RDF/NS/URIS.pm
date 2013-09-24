@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS::URIS;
 {
-  $RDF::NS::URIS::VERSION = '20130816';
+  $RDF::NS::URIS::VERSION = '20130924';
 }
 #ABSTRACT: Popular RDF namespace prefixes from prefix.cc as URI objects
 
@@ -15,8 +15,8 @@ sub GET {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -25,7 +25,7 @@ RDF::NS::URIS - Popular RDF namespace prefixes from prefix.cc as URI objects
 
 =head1 VERSION
 
-version 20130816
+version 20130924
 
 =head1 SYNOPSIS
 
@@ -59,4 +59,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

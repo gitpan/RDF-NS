@@ -4,6 +4,7 @@ MANIFEST
 META.yml
 Makefile.PL
 bin/rdfns
+lib/App/rdfns.pm
 lib/RDF/NS.pm
 lib/RDF/NS/Trine.pm
 lib/RDF/NS/URIS.pm
@@ -13,5 +14,6 @@ t/compile.t
 t/history.t
 t/namespaces.t
 t/prefix.t
+t/rdfns.t
 t/trine.t
 t/uris.t

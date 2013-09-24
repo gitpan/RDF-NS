@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20130816';
+  $RDF::NS::VERSION = '20130924';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -102,8 +102,9 @@ sub REVERSE {
     my $lookup = { };
     while ( my ($prefix, $namespace) = each %$self ) {
         my $has = $lookup->{$namespace};
-        $lookup->{$namespace} = $prefix unless
-            $has and length($has) < length($prefix);
+        if (!$has or length($has) > length($prefix) or $has ge $prefix) {
+            $lookup->{$namespace} = $prefix;
+        }
     }
     return $lookup;
 }
@@ -224,8 +225,8 @@ sub UPDATE {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -234,12 +235,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20130816
+version 20130924
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20130816';              # check at compile time
-  my $ns = RDF::NS->new('20130816');   # check at runtime
+  use RDF::NS '20130924';              # check at compile time
+  my $ns = RDF::NS->new('20130924');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -364,7 +365,8 @@ Get all known prefixes of a namespace URI.
 =head2 REVERSE
 
 Create a lookup hash from namespace URIs to prefixes. If multiple prefixes
-exist, the shortes will be used.
+exist, the shortes is be used. If multiple prefixes with same length exist, the
+first in alphabetical order is used.
 
 =head2 SELECT ( prefix[es] )
 
@@ -409,4 +411,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
