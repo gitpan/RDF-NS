@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20130924';
+  $RDF::NS::VERSION = '20130926';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -11,7 +11,7 @@ use File::ShareDir;
 use Carp;
 
 our $AUTOLOAD;
-our $FORMATS = qr/ttl|n(otation)?3|sparql|xmlns|txt|beacon/;
+our $FORMATS = qr/ttl|n(otation)?3|sparql|xmlns|txt|beacon|json/;
 
 our $DATE_REGEXP = qr/^([0-9]{4})-?([0-9][0-9])-?([0-9][0-9])$/;
 
@@ -129,6 +129,11 @@ sub TXT {
     $self->MAP( sub { "$_\t".$self->{$_} } , @_ );
 }
 
+sub JSON {
+    my $self = shift;
+    $self->MAP( sub { "\"$_\": \"".$self->{$_}."\"" } , @_ );
+}
+
 sub BEACON {
     my $self = shift;
     $self->MAP( sub { "#PREFIX: ".$self->{$_} } , @_ );
@@ -225,8 +230,8 @@ sub UPDATE {
 
 1;
 
-__END__
 
+__END__
 =pod
 
 =head1 NAME
@@ -235,12 +240,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20130924
+version 20130926
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20130924';              # check at compile time
-  my $ns = RDF::NS->new('20130924');   # check at runtime
+  use RDF::NS '20130926';              # check at compile time
+  my $ns = RDF::NS->new('20130926');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -411,3 +416,4 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+

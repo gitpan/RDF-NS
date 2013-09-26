@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS::Trine;
 {
-  $RDF::NS::Trine::VERSION = '20130924';
+  $RDF::NS::Trine::VERSION = '20130926';
 }
 #ABSTRACT: Popular RDF namespace prefixes from prefix.cc as RDF::Trine nodes
 
@@ -23,8 +23,8 @@ sub BLANK {
 
 1;
 
-__END__
 
+__END__
 =pod
 
 =head1 NAME
@@ -33,12 +33,12 @@ RDF::NS::Trine - Popular RDF namespace prefixes from prefix.cc as RDF::Trine nod
 
 =head1 VERSION
 
-version 20130924
+version 20130926
 
 =head1 SYNOPSIS
 
   use RDF::NS::Trine;
-  use constant NS => RDF::NS::Trine->new('20130924');
+  use constant NS => RDF::NS::Trine->new('20130926');
 
   NS->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
   NS->uri('foaf:Person);  #  same RDF::Trine::Node::Resource
@@ -77,3 +77,4 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+
