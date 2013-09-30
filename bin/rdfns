@@ -16,7 +16,7 @@ rdfns - look up common URI namespaces and prefixes
 
 =head1 VERSION
 
-version 20130926
+version 20130930
 
 =head1 SYNOPSIS
 
@@ -37,6 +37,9 @@ version 20130926
 
     # show all options and some examples
     $ rdfns --help
+
+    # show version
+    $ rdfns --version
 
 =head1 FORMATS
 

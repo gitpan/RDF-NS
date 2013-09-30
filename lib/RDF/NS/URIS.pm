@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS::URIS;
 {
-  $RDF::NS::URIS::VERSION = '20130926';
+  $RDF::NS::URIS::VERSION = '20130930';
 }
 #ABSTRACT: Popular RDF namespace prefixes from prefix.cc as URI objects
 
@@ -25,7 +25,7 @@ RDF::NS::URIS - Popular RDF namespace prefixes from prefix.cc as URI objects
 
 =head1 VERSION
 
-version 20130926
+version 20130930
 
 =head1 SYNOPSIS
 
