@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package App::rdfns;
 {
-  $App::rdfns::VERSION = '20130930';
+  $App::rdfns::VERSION = '20131002';
 }
 #ABSTRACT: quickly get common URI namespaces
 #VERSION
@@ -91,7 +91,7 @@ App::rdfns - quickly get common URI namespaces
 
 =head1 VERSION
 
-version 20130930
+version 20131002
 
 =head1 SEE ALSO
 
