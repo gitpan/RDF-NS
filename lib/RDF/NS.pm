@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20131002';
+  $RDF::NS::VERSION = '20131115';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -57,16 +57,18 @@ sub SET {
 
     if ( $prefix =~ /^(isa|can|new|uri)$/ ) {
         carp "Cannot support prefix '$prefix'" if $warn;
-        next;
     } elsif ( $prefix =~ /^[a-z][a-z0-9]*$/ ) {
         if ( $namespace =~ /^[a-z][a-z0-9]*:[^"<>]*$/ ) {
             $self->{$prefix} = $namespace;
+            return 1;
         } elsif( $warn ) {
             carp "Skipping invalid $prefix namespace $namespace";
         }
     } elsif ( $warn ) {
         carp "Skipping unusual prefix '$prefix'";
     }
+
+    return;
 }
 
 *LOAD = *new;
@@ -247,12 +249,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20131002
+version 20131115
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20131002';              # check at compile time
-  my $ns = RDF::NS->new('20131002');   # check at runtime
+  use RDF::NS '20131115';              # check at compile time
+  my $ns = RDF::NS->new('20131115');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -298,7 +300,7 @@ The command line client L<rdfns> is installed automatically with this module:
 This module does not require L<RDF::Trine>, which is recommended nevertheless.
 (at least version 0.140).  If you prefer RDF::NS to return instances of 
 L<RDF::Trine::Node::Resource> instead of plain strings, use L<RDF::NS::Trine>.
-<RDF::NS::URIS> is a similar module that returns instances of L<URI>.
+L<RDF::NS::URIS> is a similar module that returns instances of L<URI>.
 
 The code repository of this module contains an
 L<update script|https://github.com/nichtich/RDF-NS/blob/master/update.pl>
@@ -329,7 +331,7 @@ instance C<< $ns->foaf_Person >> returns C<http://xmlns.com/foaf/0.1/Person>.
 =head2 uri ( $short | "<$URI>" )
 
 Expand a prefixed URI, such as C<foaf:Person> or C<foaf_Person>. Alternatively 
-you can expand prefixed URIs with method calls, such as C<$ns-I<gt>foaf_Person>.
+you can expand prefixed URIs with method calls, such as C<< $ns->foaf_Person >>.
 If you pass an URI wrapped in C<E<lt>> and C<E<gt>>, it will not be expanded
 but returned as given.
 
@@ -392,7 +394,7 @@ or separated by commas, vertical bars, and spaces.
 =head2 SET ( $prefix => $namespaces [, $warn ] )
 
 Set or add a namespace mapping. Errors are ignored unless enabled as warnings
-with the third argument.
+with the third argument. Returns true if the mapping was successfully added.
 
 =head2 MAP ( $code [, prefix[es] ] )
 

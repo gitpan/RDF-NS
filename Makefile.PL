@@ -28,7 +28,7 @@ my %WriteMakefileArgs = (
     "File::ShareDir" => "1.00"
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => 20131002,
+  "VERSION" => 20131115,
   "test" => {
     "TESTS" => "t/*.t"
   }
