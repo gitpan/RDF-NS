@@ -6,9 +6,11 @@ use strict;
 use App::rdfns;
 exit App::rdfns->new->run(@ARGV);
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -16,7 +18,7 @@ rdfns - look up common URI namespaces and prefixes
 
 =head1 VERSION
 
-version 20131115
+version 20131205
 
 =head1 SYNOPSIS
 
@@ -88,8 +90,6 @@ alphabetical order. For instance C<rdfns wgs84.prefix> returns prefix C<geo>.
 
 =back
 
-=encoding utf8
-
 =head1 SEE ALSO
 
 This script is internally implemented in L<App::rdfns>, based on L<RDF::NS>.
@@ -106,4 +106,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

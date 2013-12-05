@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS::URIS;
 {
-  $RDF::NS::URIS::VERSION = '20131115';
+  $RDF::NS::URIS::VERSION = '20131205';
 }
 #ABSTRACT: Popular RDF namespace prefixes from prefix.cc as URI objects
 
@@ -15,9 +15,11 @@ sub GET {
 
 1;
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -25,7 +27,7 @@ RDF::NS::URIS - Popular RDF namespace prefixes from prefix.cc as URI objects
 
 =head1 VERSION
 
-version 20131115
+version 20131205
 
 =head1 SYNOPSIS
 
@@ -45,8 +47,6 @@ of plain strings. You must have installed module L<URI> to use this package.
 
 L<URI::NamespaceMap>
 
-=encoding utf8
-
 =head1 AUTHOR
 
 Jakob Voß
@@ -59,4 +59,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

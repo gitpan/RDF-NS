@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 {
-  $RDF::NS::VERSION = '20131115';
+  $RDF::NS::VERSION = '20131205';
 }
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
 
@@ -239,9 +239,11 @@ sub UPDATE {
 
 1;
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -249,12 +251,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20131115
+version 20131205
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20131115';              # check at compile time
-  my $ns = RDF::NS->new('20131115');   # check at runtime
+  use RDF::NS '20131205';              # check at compile time
+  my $ns = RDF::NS->new('20131205');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -416,8 +418,6 @@ L<RDF::Trine::Namespace>, L<RDF::Trine::NamespaceMap>, L<URI::NamespaceMap>,
 L<RDF::Prefixes>, L<RDF::Simple::NS>, L<RDF::RDFa::Parser::Profile::PrefixCC>,
 L<Class::RDF::NS>, L<XML::Namespace>, L<XML::CommonNS> etc.
 
-=encoding utf8
-
 =head1 AUTHOR
 
 Jakob Voß
@@ -430,4 +430,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
