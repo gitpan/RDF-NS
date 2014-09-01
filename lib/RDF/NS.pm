@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package RDF::NS;
-{
-  $RDF::NS::VERSION = '20131205';
-}
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
-
+$RDF::NS::VERSION = '20140901';
 use Scalar::Util qw(blessed);
 use File::ShareDir;
 use Carp;
@@ -251,12 +248,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20131205
+version 20140901
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20131205';              # check at compile time
-  my $ns = RDF::NS->new('20131205');   # check at runtime
+  use RDF::NS '20140901';              # check at compile time
+  my $ns = RDF::NS->new('20140901');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
