@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS::Trine;
 #ABSTRACT: Popular RDF namespace prefixes from prefix.cc as RDF::Trine nodes
-$RDF::NS::Trine::VERSION = '20140901';
+$RDF::NS::Trine::VERSION = '20140908';
 use v5.10;
 use RDF::Trine::Node::Resource;
 use RDF::Trine::Node::Blank;
@@ -32,12 +32,12 @@ RDF::NS::Trine - Popular RDF namespace prefixes from prefix.cc as RDF::Trine nod
 
 =head1 VERSION
 
-version 20140901
+version 20140908
 
 =head1 SYNOPSIS
 
   use RDF::NS::Trine;
-  use constant NS => RDF::NS::Trine->new('20140901');
+  use constant NS => RDF::NS::Trine->new('20140908');
 
   NS->foaf_Person;        # iri('http://xmlns.com/foaf/0.1/Person')
   NS->uri('foaf:Person);  #  same RDF::Trine::Node::Resource

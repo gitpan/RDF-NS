@@ -9,6 +9,7 @@ lib/App/rdfns.pm
 lib/RDF/NS.pm
 lib/RDF/NS/Trine.pm
 lib/RDF/NS/URIS.pm
+lib/RDF/SN.pm
 share/prefix.cc
 t/author-critic.t
 t/compile.t
