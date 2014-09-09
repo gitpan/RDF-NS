@@ -1,3 +1,10 @@
+20140909 2014-099  (1415 prefixes)
+ - added:   opllic
+
+ - improved test coverage (close #5)
+ - support reverse lookup in rdfns (close #9)
+ - test Perl 5.20
+
 20140908 2014-098  (1414 prefixes)
  - added:   abs article cdc opencyc smg
  - new module RDF::SN to abbreviate URIs
@@ -135,7 +142,7 @@
             sgv spif tcga
  - changed: acm crm prism prv s4ac
 
- - new methods PREFIX PREFIXES  and REVERSE
+ - new methods PREFIX PREFIXES and REVERSE
 
 20120521 2012-05-21 (791 prefixes)
  - added:   d2r efo enhancer fcm fise fl fls oboe pccz rdrel rec54

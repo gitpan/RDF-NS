@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::SN;
 #ABSTRACT: Short names for URIs with prefixes from prefix.cc
-$RDF::SN::VERSION = '20140908';
+$RDF::SN::VERSION = '20140909';
 use RDF::NS;
 use Scalar::Util qw(blessed);
 
@@ -67,7 +67,7 @@ RDF::SN - Short names for URIs with prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20140908
+version 20140909
 
 =head1 SYNOPSIS
 

@@ -3,7 +3,7 @@ use warnings;
 package App::rdfns;
 #ABSTRACT: quickly get common URI namespaces
 #VERSION
-$App::rdfns::VERSION = '20140908';
+$App::rdfns::VERSION = '20140909';
 use v5.10;
 
 use RDF::NS;
@@ -15,29 +15,32 @@ sub new {
 sub run {
     my ($self, @ARGV) = @_;
     my $format = '';
-    my $version = 'any';
 
     return $self->usage if !@ARGV or $ARGV[0] =~ /^(-[?h]|--help)$/;
     return $self->version if $ARGV[0] =~ /^(-v|--version)$/;
 
+    my $ns = RDF::NS->new;
+    my $sn = $ns->REVERSE;
+
     foreach my $a (@ARGV) {
-        if ( $a =~ /^(\d{8})$/ ) {
-            $version = $a;
+        if ( $a =~ /^([0-9]{8})$/ ) {
+            $ns = RDF::NS->new($a);
+            $sn = $ns->REVERSE;
             next;
         }
-        my $ns = RDF::NS->new($version);
-        my $rev;
         if ( $a =~ qr{^https?://} ) {
-            $rev ||= $ns->REVERSE;
-            say $rev->{$a} if $rev->{$a};
+            my $qname = $sn->qname($a);
+            if ($qname) {
+                $qname =~ s/:$//;
+                say $qname;
+            }
         } elsif ( $a =~ /:/ ) {
             print map { $ns->URI($_)."\n" } split(/[|, ]+/, $a);
         } elsif ( $a =~ s/\.([^.]+)$// ) {
             my $f = $1;
             if ( $f eq 'prefix' ) {
-               $rev ||= $ns->REVERSE;
                print map { "$_\n" if defined $_ } map {
-                   $rev->{$_}
+                   $sn->{$_}
                } $ns->FORMAT( $format, $a );
                next;
             } elsif ( $f =~ $RDF::NS::FORMATS ) {
@@ -66,6 +69,7 @@ USAGE: rdfns { [YYYYMMDD] ( <prefix[es]>[.format] | prefix:name | URL ) }+
     rdfns foaf.xmlns foaf.n3
     rdfns rdfs:seeAlso
     rdfns http://www.w3.org/2003/01/geo/wgs84_pos#
+    rdfns http://purl.org/dc/elements/1.1/title
     rdfns wgs.prefix
 USAGE
     0;
@@ -90,7 +94,7 @@ App::rdfns - quickly get common URI namespaces
 
 =head1 VERSION
 
-version 20140908
+version 20140909
 
 =head1 SEE ALSO
 

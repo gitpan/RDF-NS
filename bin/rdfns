@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/env perl
 #ABSTRACT: look up common URI namespaces and prefixes
 #PODNAME: rdfns
 
@@ -18,7 +18,7 @@ rdfns - look up common URI namespaces and prefixes
 
 =head1 VERSION
 
-version 20140908
+version 20140909
 
 =head1 SYNOPSIS
 
@@ -33,6 +33,9 @@ version 20140908
 
     # lookup preferred prefix
     $ rdfns http://www.w3.org/2003/01/geo/wgs84_pos#
+    
+    # create short name of an URL
+    $ rdfns http://purl.org/dc/elements/1.1/title
 
     # map prefix to preferred prefix
     $ rdfns wgs.prefix

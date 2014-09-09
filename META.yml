@@ -19,4 +19,4 @@ resources:
   bugtracker: https://github.com/nichtich/RDF-NS/issues
   homepage: https://github.com/nichtich/RDF-NS
   repository: https://github.com/nichtich/RDF-NS.git
-version: '20140908'
+version: '20140909'

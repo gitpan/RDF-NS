@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::NS;
 #ABSTRACT: Just use popular RDF namespace prefixes from prefix.cc
-$RDF::NS::VERSION = '20140908';
+$RDF::NS::VERSION = '20140909';
 use Scalar::Util qw(blessed);
 use File::ShareDir;
 use Carp;
@@ -14,11 +14,14 @@ our $FORMATS = qr/ttl|n(otation)?3|sparql|xmlns|txt|beacon|json/;
 our $DATE_REGEXP = qr/^([0-9]{4})-?([0-9][0-9])-?([0-9][0-9])$/;
 
 sub new {
-    my ($class, $from, %options) = @_;
+    my $class = shift;
+    my $from  = @_ % 2 ? shift : 1;
+    my %options = @_;
 
-    $from ||= 'any';
     my $at   = $options{at} || 'any';
     my $warn = $options{'warn'};
+    $from = $options{from} if exists $options{from};
+    $from = 'any' if !$from or $from eq 1;
 
     if ( $from =~ $DATE_REGEXP ) {
         $at   = "$1$2$3";
@@ -26,7 +29,7 @@ sub new {
     } elsif( $at =~ $DATE_REGEXP ) {
         $at   = "$1$2$3";
     } elsif ( $at !~ 'any' ) {
-        croak "RDF::NS expects a date as YYYY-MM-DD"; 
+        croak "RDF::NS expects 'any', '1' or a date as YYYY-MM-DD"; 
     }
 
     $from = File::ShareDir::dist_file('RDF-NS', "prefix.cc" )
@@ -241,12 +244,12 @@ RDF::NS - Just use popular RDF namespace prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20140908
+version 20140909
 
 =head1 SYNOPSIS
 
-  use RDF::NS '20140908';              # check at compile time
-  my $ns = RDF::NS->new('20140908');   # check at runtime
+  use RDF::NS '20140909';              # check at compile time
+  my $ns = RDF::NS->new('20140909');   # check at runtime
 
   $ns->foaf;               # http://xmlns.com/foaf/0.1/
   $ns->foaf_Person;        # http://xmlns.com/foaf/0.1/Person
@@ -302,13 +305,13 @@ to download the current prefix-namespace mappings from L<http://prefix.cc>.
 
 In most cases you only need the following lowercase methods.
 
-=head2 new ( $file_or_date [, %options ] )
+=head2 new ( [ $file_or_date ] [ %options ] )
 
 Create a new namespace mapping from a selected file or date. The special string
-C<"any"> can be used to get the newest mapping, but you should better select a
-specific version, as mappings can change, violating backwards compatibility.
-Supported options include C<warn> to enable warnings and C<at> to specify a
-date. 
+C<"any"> or the value C<1> can be used to get the newest mapping, but you
+should better select a specific version, as mappings can change, violating
+backwards compatibility.  Supported options include C<warn> to enable warnings
+and C<at> to specify a date. 
 
 =head2 "I<prefix>"
 
@@ -406,6 +409,10 @@ There are several other CPAN modules to deal with IRI namespaces, for instance
 L<RDF::Trine::Namespace>, L<RDF::Trine::NamespaceMap>, L<URI::NamespaceMap>,
 L<RDF::Prefixes>, L<RDF::Simple::NS>, L<RDF::RDFa::Parser::Profile::PrefixCC>,
 L<Class::RDF::NS>, L<XML::Namespace>, L<XML::CommonNS> etc.
+
+=for HTML <a href="https://travis-ci.org/nichtich/RDF-NS"><img src="https://travis-ci.org/nichtich/RDF-NS.svg?branch=master"></a>
+
+=for HTML <a href="https://coveralls.io/r/nichtich/RDF-NS?branch=master"><img src="https://img.shields.io/coveralls/nichtich/RDF-NS.svg"></a>
 
 =head1 AUTHOR
 
