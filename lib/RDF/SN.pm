@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package RDF::SN;
 #ABSTRACT: Short names for URIs with prefixes from prefix.cc
-$RDF::SN::VERSION = '20140909';
+$RDF::SN::VERSION = '20140910';
 use RDF::NS;
 use Scalar::Util qw(blessed);
 
@@ -14,21 +14,24 @@ sub new {
     }
 
     my $self = bless { }, $class;
+    
     while ( my ($prefix, $namespace) = each %$ns ) {
         my $has = $self->{$namespace};
-        if (!$has or length($has) > length($prefix) or $has ge $prefix) {
+        if (!$has || (length($has) > length($prefix))
+                  || (length($has) == length($prefix) and $has ge $prefix)
+        ) {
             $self->{$namespace} = $prefix;
         }
     }
-    return $self;
+
+    $self;
 }
 
 sub qname {
-    my ($self, $uri, $sep) = @_;
-    $sep ||= ':';
+    my ($self, $uri) = @_;
 
     if ($self->{$uri}) {
-        return $self->{$uri}.$sep;
+        return wantarray ? ($self->{$uri}, '') : $self->{$uri}.':';
     }
 
     # regexpes copied from RDF::Trine::Node::Resource
@@ -41,7 +44,7 @@ sub qname {
         my $ln = $1;
         my $ns = substr($uri, 0, length($uri)-length($ln));
         if ($self->{$ns}) {
-            return $self->{$ns}.$sep.$ln;
+            return(wantarray ? ($self->{$ns},$ln) : $self->{$ns}.':'.$ln);
         }
     }
 
@@ -49,7 +52,11 @@ sub qname {
 }
 
 sub qname_ {
-    $_[0]->qname($_[1],'_');
+    if(wantarray) {
+        return $_[0]->qname($_[1]);
+    } else {
+        return join '_', $_[0]->qname($_[1]);
+    }
 }
 
 
@@ -67,7 +74,7 @@ RDF::SN - Short names for URIs with prefixes from prefix.cc
 
 =head1 VERSION
 
-version 20140909
+version 20140910
 
 =head1 SYNOPSIS
 
@@ -86,10 +93,10 @@ Create a lookup hash from a mapping hash of namespace URIs to prefixes
 (L<RDF::NS>). If multiple prefixes exist, the shortest is used. If multiple
 prefixes with same length exist, the first in alphabetical order is used.
 
-=head2 qname( $uri [, $separator_char ] )
+=head2 qname( $uri )
 
-Returns a prefix and local name if the URI can be abbreviated with given
-namespaces.  The default separator char is a colon (C<:>).
+Returns a prefix and local name (as list in list context, concatenated by C<:>
+in scalar context) if the URI can be abbreviated with given namespaces.
 
 =head1 AUTHOR
 
